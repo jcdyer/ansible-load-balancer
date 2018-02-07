@@ -4,6 +4,7 @@ LOAD_BALANCER_OPS_EMAIL: ops@example.com
 
 LOAD_BALANCER_APT_PACKAGES:
   - haproxy
+  - nginx   # To serve maintenance pages
   - letsencrypt
   - inotify-tools
   - python3-openssl
@@ -35,3 +36,7 @@ LOAD_BALANCER_SNAKE_OIL_CERT: ssl-cert-snakeoil.pem
 
 # The interval between invocations of manage_certs.py in minutes.
 LOAD_BALANCER_MANAGE_CERTS_INTERVAL: 5
+
+# Configuration for Nginx server serving maintenance pages.
+MAINTENANCE_SERVER_PORT: 8888
+MAINTENANCE_SERVER_STATIC_ROOT: /srv/maintenance/
