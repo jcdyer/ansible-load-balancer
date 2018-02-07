@@ -145,7 +145,7 @@
 - name: Install default maintenance page
   copy:
     src: default-maintenance-page.html
-    dest: {{ MAINTENANCE_SERVER_STATIC_ROOT }}
+    dest: "{{ MAINTENANCE_SERVER_STATIC_ROOT }}"
 
 - name: Enable Nginx service and restart
   service: name=nginx enabled=yes state=restarted

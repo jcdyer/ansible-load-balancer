@@ -4,7 +4,6 @@ LOAD_BALANCER_OPS_EMAIL: ops@example.com
 
 LOAD_BALANCER_APT_PACKAGES:
   - haproxy
-  - nginx   # To serve maintenance pages
   - letsencrypt
   - inotify-tools
   - python3-openssl
