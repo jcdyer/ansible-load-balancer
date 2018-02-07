@@ -122,17 +122,33 @@
     group: www-data
     state: directory
 
+- name: Install Nginx
+  apt: name=nginx
+  ignore_errors: yes # Port 80 which is used by the default Nginx config is
+                     # already used by HAProxy. This causes a configuration
+                     # error during installation.
+
 - name: Remove default nginx config
   file: path=/etc/nginx/sites-enabled/default state=absent
 
 - name: Copy Nginx site configuration
-  template: src=nginx-maintenance.conf dest=/etc/nginx/sites-available/maintenance
+  template:
+    src: nginx-maintenance.conf
+    dest: /etc/nginx/sites-available/maintenance
 
 - name: Enable Nginx config
-  file: src=/etc/nginx/sites-available/maintenance dest=/etc/nginx/sites-enabled/maintenance state=link
+  file:
+    src: /etc/nginx/sites-available/maintenance
+    dest: /etc/nginx/sites-enabled/maintenance
+    state: link
 
 - name: Install default maintenance page
-  copy: src=default-maintenance-page.html dest={{ MAINTENANCE_SERVER_STATIC_ROOT }}
+  copy:
+    src: default-maintenance-page.html
+    dest: {{ MAINTENANCE_SERVER_STATIC_ROOT }}
+
+- name: Enable Nginx service and restart
+  service: name=nginx enabled=yes state=restarted
 
 - name: open HTTP and HTTPS port on the firewall
   ufw:
