@@ -112,8 +112,8 @@
   copy:
     dest: "{{ LOAD_BALANCER_CONF_DIR }}/01-maintenance"
     content: |
-        backend be-maintenance-opencraft
-        server maintenance-page 127.0.0.1:{{ MAINTENANCE_SERVER_PORT }}
+        backend be-maintenance
+            server maintenance-page 127.0.0.1:{{ MAINTENANCE_SERVER_PORT }}
 
 - name: Ensure that {{ MAINTENANCE_SERVER_STATIC_ROOT }} exits
   file:
