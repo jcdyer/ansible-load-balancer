@@ -39,3 +39,4 @@ LOAD_BALANCER_MANAGE_CERTS_INTERVAL: 5
 # Configuration for Nginx server serving maintenance pages.
 MAINTENANCE_SERVER_PORT: 8888
 MAINTENANCE_SERVER_STATIC_ROOT: /srv/maintenance/
+MAINTENANCE_PAGES_REPO: "https://github.com/open-craft/maintenance-pages"

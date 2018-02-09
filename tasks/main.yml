@@ -142,9 +142,9 @@
     dest: /etc/nginx/sites-enabled/maintenance
     state: link
 
-- name: Install default maintenance page
-  copy:
-    src: default-maintenance-page.html
+- name: Install maintenance content
+  git:
+    repo: "{{ MAINTENANCE_PAGES_REPO }}"
     dest: "{{ MAINTENANCE_SERVER_STATIC_ROOT }}"
 
 - name: Enable Nginx service and restart
