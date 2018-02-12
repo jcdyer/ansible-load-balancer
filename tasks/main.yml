@@ -112,8 +112,14 @@
   copy:
     dest: "{{ LOAD_BALANCER_CONF_DIR }}/01-maintenance"
     content: |
-        backend be-maintenance
+        backend maintenance
             server maintenance-page 127.0.0.1:{{ MAINTENANCE_SERVER_PORT }}
+
+        backend scheduled-maintenance
+            server scheduled-maintenance-page 127.0.0.1:{{ MAINTENANCE_SCHEDULED_SERVER_PORT }}
+
+        backend unscheduled-maintenance
+            server unscheduled-maintenance-page 127.0.0.1:{{ MAINTENANCE_UNSCHEDULED_SERVER_PORT }}
 
 - name: Ensure that {{ MAINTENANCE_SERVER_STATIC_ROOT }} exits
   file:
