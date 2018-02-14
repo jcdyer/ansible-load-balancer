@@ -143,7 +143,7 @@
 - name: Install maintenance content
   git:
     repo: "{{ MAINTENANCE_PAGES_REPO }}"
-    dest: "{{ MAINTENANCE_SERVER_STATIC_ROOT }}"
+    dest: "{{ MAINTENANCE_SERVER_STATIC_ROOT }}/default"
 
 - name: Enable Nginx service and restart
   service: name=nginx enabled=yes state=restarted
