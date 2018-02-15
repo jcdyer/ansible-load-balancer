@@ -113,7 +113,7 @@
     src: haproxy-maintenance-backends.conf
     dest: "{{ LOAD_BALANCER_CONF_DIR }}/01-maintenance"
 
-- name: Ensure that {{ MAINTENANCE_SERVER_STATIC_ROOT }} exits
+- name: Ensure that {{ MAINTENANCE_SERVER_STATIC_ROOT }} exists
   file:
     path: "{{ MAINTENANCE_SERVER_STATIC_ROOT }}"
     owner: www-data
